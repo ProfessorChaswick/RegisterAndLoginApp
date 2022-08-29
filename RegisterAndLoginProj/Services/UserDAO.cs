@@ -1,4 +1,4 @@
-﻿//using AspNetCore;
+﻿using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using RegisterAndLoginProj.Models;
 using System.Data.SqlClient;
 
@@ -15,7 +15,7 @@ namespace RegisterAndLoginProj.Services
             Find documentation for all this stuff in microsoft docs undet
             SqlCommand.Parameters Property
             */
-            string sqlStatement = "Select * from dbo.Users where username = @username AND password = @password";
+            string sqlStatement = "Select * from dbo.Users where UserName = @username AND Password = @password";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -30,6 +30,7 @@ namespace RegisterAndLoginProj.Services
                     if(reader.HasRows)
                     {
                         success = true;
+                       //System.Windows.Forms.MessageBox.Show("Test");
                     }
                 }
                 catch(Exception ex)
